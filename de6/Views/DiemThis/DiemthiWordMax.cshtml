@@ -1,0 +1,58 @@
+﻿@model IEnumerable<de6.Models.DiemThi>
+
+@{
+    ViewBag.Title = "DiemthiWordMax";
+}
+
+<h2>Điểm thi word cao nhất</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaSV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenMT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoTC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayThi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SinhVien.TenSV)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaSV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenMT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoTC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayThi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SinhVien.TenSV)
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Back to list", "Index")
+</p>

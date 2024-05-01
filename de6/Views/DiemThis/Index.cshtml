@@ -1,0 +1,74 @@
+﻿@model PagedList.IPagedList<de6.Models.DiemThi>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            MaSV
+        </th>
+        <th>
+            TenMT
+        </th>
+        <th>
+            SoTC
+        </th>
+        <th>
+            NgayThi
+        </th>
+        <th>
+            Diem
+        </th>
+        <th>
+            SinhVien.TenSV
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaSV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenMT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoTC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayThi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SinhVien.TenSV)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaSV, key=item.TenMT }) |
+            @Html.ActionLink("Details", "Details", new { id = item.MaSV, key = item.TenMT }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.MaSV, key = item.TenMT })
+        </td>
+    </tr>
+}
+
+</table>
+
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+<p>
+    @Html.ActionLink("Tìm kiếm theo tên môn thi", "TKtheoTenMT")
+</p>
+<p>
+    @Html.ActionLink("Điểm thi word cao nhất", "DiemthiWordMax")
+</p>
